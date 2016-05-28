@@ -1,8 +1,15 @@
 grammar Uql;
-queries: returnquery (NEWLINE returnquery)* ;
+@header{
+    package gen;
+}
+
+
+
+queries : returnquery (NEWLINE returnquery)* ;
 returnquery:  query RETURN tablearray sortexpression ENDTOKEN| query RETURN tablearray ENDTOKEN ;
-query: expression | query LOGIC query | '('query')';
-expression : STRING NUMERICOPERATOR NUMBER | STRINGKEYWORD STRINGOPERATOR STRING | NUMERICKEYWORD EQUALS NUMBER | STRINGKEYWORD EQUALS STRING |
+query: expression | query logic query | LEFTBRACKET query RIGHTBRACKET;
+logic: LOGIC;
+expression : NUMERICKEYWORD NUMERICOPERATOR NUMBER | STRINGKEYWORD STRINGOPERATOR STRING | NUMERICKEYWORD EQUALS NUMBER | STRINGKEYWORD EQUALS STRING |
              STRINGKEYWORD ARRAYOPERATOR stringarray | NUMERICKEYWORD ARRAYOPERATOR numericarray;
 tablearray: STRINGKEYWORD(','STRINGKEYWORD)* | ALLSELECTOR;
 numericarray: '['NUMBER(','NUMBER)*']';
@@ -22,6 +29,8 @@ ARRAYOPERATOR : 'in' | 'not in';
 ALLSELECTOR : '*';
 ENDTOKEN: ';';
 EQUALS : '=';
+LEFTBRACKET : '(';
+RIGHTBRACKET : ')';
 NUMBER : [0]([\.][0-9]*)? | [\.][0-9]+ | [1-9][0-9]*([\.][0-9]*)?;
 STRING : '\''( ~'\'' | '\\\'')+'\'';
 NEWLINE : '\n' | '\r\n';

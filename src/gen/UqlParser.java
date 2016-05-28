@@ -1,4 +1,7 @@
-// Generated from D:/szko³a/4rok/Kompilator/java\Uql.g4 by ANTLR 4.5.1
+// Generated from D:/szko³a/4rok/Kompilator/UqlProject/ANTLR\Uql.g4 by ANTLR 4.5.1
+
+    package gen;
+
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -16,27 +19,28 @@ public class UqlParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, LOGIC=7, STRINGKEYWORD=8, 
-		NUMERICKEYWORD=9, NUMERICOPERATOR=10, STRINGOPERATOR=11, RETURN=12, SORT=13, 
-		SORTDIRECTION=14, ARRAYOPERATOR=15, ALLSELECTOR=16, ENDTOKEN=17, EQUALS=18, 
-		NUMBER=19, STRING=20, NEWLINE=21, WS=22, UNKNOWN=23;
+		T__0=1, T__1=2, T__2=3, T__3=4, LOGIC=5, STRINGKEYWORD=6, NUMERICKEYWORD=7, 
+		NUMERICOPERATOR=8, STRINGOPERATOR=9, RETURN=10, SORT=11, SORTDIRECTION=12, 
+		ARRAYOPERATOR=13, ALLSELECTOR=14, ENDTOKEN=15, EQUALS=16, LEFTBRACKET=17, 
+		RIGHTBRACKET=18, NUMBER=19, STRING=20, NEWLINE=21, WS=22, UNKNOWN=23;
 	public static final int
-		RULE_queries = 0, RULE_returnquery = 1, RULE_query = 2, RULE_expression = 3, 
-		RULE_tablearray = 4, RULE_numericarray = 5, RULE_stringarray = 6, RULE_sortexpression = 7;
+		RULE_queries = 0, RULE_returnquery = 1, RULE_query = 2, RULE_logic = 3, 
+		RULE_expression = 4, RULE_tablearray = 5, RULE_numericarray = 6, RULE_stringarray = 7, 
+		RULE_sortexpression = 8;
 	public static final String[] ruleNames = {
-		"queries", "returnquery", "query", "expression", "tablearray", "numericarray", 
-		"stringarray", "sortexpression"
+		"queries", "returnquery", "query", "logic", "expression", "tablearray", 
+		"numericarray", "stringarray", "sortexpression"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'('", "')'", "','", "'['", "']'", "'by'", null, null, null, null, 
-		null, null, null, null, null, "'*'", "';'", "'='"
+		null, "','", "'['", "']'", "'by'", null, null, null, null, null, null, 
+		null, null, null, "'*'", "';'", "'='", "'('", "')'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, null, null, "LOGIC", "STRINGKEYWORD", "NUMERICKEYWORD", 
+		null, null, null, null, null, "LOGIC", "STRINGKEYWORD", "NUMERICKEYWORD", 
 		"NUMERICOPERATOR", "STRINGOPERATOR", "RETURN", "SORT", "SORTDIRECTION", 
-		"ARRAYOPERATOR", "ALLSELECTOR", "ENDTOKEN", "EQUALS", "NUMBER", "STRING", 
-		"NEWLINE", "WS", "UNKNOWN"
+		"ARRAYOPERATOR", "ALLSELECTOR", "ENDTOKEN", "EQUALS", "LEFTBRACKET", "RIGHTBRACKET", 
+		"NUMBER", "STRING", "NEWLINE", "WS", "UNKNOWN"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -83,6 +87,13 @@ public class UqlParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
+
+	    int count = 0;
+
+	    public int getCount(){
+	        return count;
+	    }
+
 	public UqlParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
@@ -110,11 +121,6 @@ public class UqlParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitQueries(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitQueries(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final QueriesContext queries() throws RecognitionException {
@@ -124,21 +130,22 @@ public class UqlParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(16);
+			setState(18);
 			returnquery();
-			setState(21);
+			count++;
+			setState(24);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==NEWLINE) {
 				{
 				{
-				setState(17);
+				setState(20);
 				match(NEWLINE);
-				setState(18);
+				setState(21);
 				returnquery();
 				}
 				}
-				setState(23);
+				setState(26);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -179,44 +186,39 @@ public class UqlParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitReturnquery(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitReturnquery(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ReturnqueryContext returnquery() throws RecognitionException {
 		ReturnqueryContext _localctx = new ReturnqueryContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_returnquery);
 		try {
-			setState(35);
+			setState(38);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(24);
-				query(0);
-				setState(25);
-				match(RETURN);
-				setState(26);
-				tablearray();
 				setState(27);
-				sortexpression();
+				query(0);
 				setState(28);
+				match(RETURN);
+				setState(29);
+				tablearray();
+				setState(30);
+				sortexpression();
+				setState(31);
 				match(ENDTOKEN);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(30);
-				query(0);
-				setState(31);
-				match(RETURN);
-				setState(32);
-				tablearray();
 				setState(33);
+				query(0);
+				setState(34);
+				match(RETURN);
+				setState(35);
+				tablearray();
+				setState(36);
 				match(ENDTOKEN);
 				}
 				break;
@@ -237,13 +239,17 @@ public class UqlParser extends Parser {
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
+		public TerminalNode LEFTBRACKET() { return getToken(UqlParser.LEFTBRACKET, 0); }
 		public List<QueryContext> query() {
 			return getRuleContexts(QueryContext.class);
 		}
 		public QueryContext query(int i) {
 			return getRuleContext(QueryContext.class,i);
 		}
-		public TerminalNode LOGIC() { return getToken(UqlParser.LOGIC, 0); }
+		public TerminalNode RIGHTBRACKET() { return getToken(UqlParser.RIGHTBRACKET, 0); }
+		public LogicContext logic() {
+			return getRuleContext(LogicContext.class,0);
+		}
 		public QueryContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -255,11 +261,6 @@ public class UqlParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitQuery(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitQuery(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -278,31 +279,30 @@ public class UqlParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(43);
+			setState(46);
 			switch (_input.LA(1)) {
 			case STRINGKEYWORD:
 			case NUMERICKEYWORD:
-			case STRING:
 				{
-				setState(38);
+				setState(41);
 				expression();
 				}
 				break;
-			case T__0:
+			case LEFTBRACKET:
 				{
-				setState(39);
-				match(T__0);
-				setState(40);
+				setState(42);
+				match(LEFTBRACKET);
+				setState(43);
 				query(0);
-				setState(41);
-				match(T__1);
+				setState(44);
+				match(RIGHTBRACKET);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(50);
+			setState(54);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -313,16 +313,16 @@ public class UqlParser extends Parser {
 					{
 					_localctx = new QueryContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_query);
-					setState(45);
+					setState(48);
 					if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-					setState(46);
-					match(LOGIC);
-					setState(47);
+					setState(49);
+					logic();
+					setState(50);
 					query(3);
 					}
 					} 
 				}
-				setState(52);
+				setState(56);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			}
@@ -339,13 +339,50 @@ public class UqlParser extends Parser {
 		return _localctx;
 	}
 
+	public static class LogicContext extends ParserRuleContext {
+		public TerminalNode LOGIC() { return getToken(UqlParser.LOGIC, 0); }
+		public LogicContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_logic; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof UqlListener ) ((UqlListener)listener).enterLogic(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitLogic(this);
+		}
+	}
+
+	public final LogicContext logic() throws RecognitionException {
+		LogicContext _localctx = new LogicContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_logic);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(57);
+			match(LOGIC);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
 	public static class ExpressionContext extends ParserRuleContext {
-		public TerminalNode STRING() { return getToken(UqlParser.STRING, 0); }
+		public TerminalNode NUMERICKEYWORD() { return getToken(UqlParser.NUMERICKEYWORD, 0); }
 		public TerminalNode NUMERICOPERATOR() { return getToken(UqlParser.NUMERICOPERATOR, 0); }
 		public TerminalNode NUMBER() { return getToken(UqlParser.NUMBER, 0); }
 		public TerminalNode STRINGKEYWORD() { return getToken(UqlParser.STRINGKEYWORD, 0); }
 		public TerminalNode STRINGOPERATOR() { return getToken(UqlParser.STRINGOPERATOR, 0); }
-		public TerminalNode NUMERICKEYWORD() { return getToken(UqlParser.NUMERICKEYWORD, 0); }
+		public TerminalNode STRING() { return getToken(UqlParser.STRING, 0); }
 		public TerminalNode EQUALS() { return getToken(UqlParser.EQUALS, 0); }
 		public TerminalNode ARRAYOPERATOR() { return getToken(UqlParser.ARRAYOPERATOR, 0); }
 		public StringarrayContext stringarray() {
@@ -366,82 +403,77 @@ public class UqlParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitExpression(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitExpression(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
 		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_expression);
+		enterRule(_localctx, 8, RULE_expression);
 		try {
-			setState(71);
+			setState(77);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(53);
-				match(STRING);
-				setState(54);
+				setState(59);
+				match(NUMERICKEYWORD);
+				setState(60);
 				match(NUMERICOPERATOR);
-				setState(55);
+				setState(61);
 				match(NUMBER);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(56);
+				setState(62);
 				match(STRINGKEYWORD);
-				setState(57);
+				setState(63);
 				match(STRINGOPERATOR);
-				setState(58);
+				setState(64);
 				match(STRING);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(59);
+				setState(65);
 				match(NUMERICKEYWORD);
-				setState(60);
+				setState(66);
 				match(EQUALS);
-				setState(61);
+				setState(67);
 				match(NUMBER);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(62);
+				setState(68);
 				match(STRINGKEYWORD);
-				setState(63);
+				setState(69);
 				match(EQUALS);
-				setState(64);
+				setState(70);
 				match(STRING);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(65);
+				setState(71);
 				match(STRINGKEYWORD);
-				setState(66);
+				setState(72);
 				match(ARRAYOPERATOR);
-				setState(67);
+				setState(73);
 				stringarray();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(68);
+				setState(74);
 				match(NUMERICKEYWORD);
-				setState(69);
+				setState(75);
 				match(ARRAYOPERATOR);
-				setState(70);
+				setState(76);
 				numericarray();
 				}
 				break;
@@ -476,38 +508,33 @@ public class UqlParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitTablearray(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitTablearray(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TablearrayContext tablearray() throws RecognitionException {
 		TablearrayContext _localctx = new TablearrayContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_tablearray);
+		enterRule(_localctx, 10, RULE_tablearray);
 		int _la;
 		try {
-			setState(82);
+			setState(88);
 			switch (_input.LA(1)) {
 			case STRINGKEYWORD:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(73);
+				setState(79);
 				match(STRINGKEYWORD);
-				setState(78);
+				setState(84);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (_la==T__2) {
+				while (_la==T__0) {
 					{
 					{
-					setState(74);
-					match(T__2);
-					setState(75);
+					setState(80);
+					match(T__0);
+					setState(81);
 					match(STRINGKEYWORD);
 					}
 					}
-					setState(80);
+					setState(86);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -516,7 +543,7 @@ public class UqlParser extends Parser {
 			case ALLSELECTOR:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(81);
+				setState(87);
 				match(ALLSELECTOR);
 				}
 				break;
@@ -552,42 +579,37 @@ public class UqlParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitNumericarray(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitNumericarray(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final NumericarrayContext numericarray() throws RecognitionException {
 		NumericarrayContext _localctx = new NumericarrayContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_numericarray);
+		enterRule(_localctx, 12, RULE_numericarray);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(84);
-			match(T__3);
-			setState(85);
-			match(NUMBER);
 			setState(90);
+			match(T__1);
+			setState(91);
+			match(NUMBER);
+			setState(96);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__2) {
+			while (_la==T__0) {
 				{
 				{
-				setState(86);
-				match(T__2);
-				setState(87);
+				setState(92);
+				match(T__0);
+				setState(93);
 				match(NUMBER);
 				}
 				}
-				setState(92);
+				setState(98);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(93);
-			match(T__4);
+			setState(99);
+			match(T__2);
 			}
 		}
 		catch (RecognitionException re) {
@@ -618,42 +640,37 @@ public class UqlParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitStringarray(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitStringarray(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final StringarrayContext stringarray() throws RecognitionException {
 		StringarrayContext _localctx = new StringarrayContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_stringarray);
+		enterRule(_localctx, 14, RULE_stringarray);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(95);
-			match(T__3);
-			setState(96);
-			match(STRING);
 			setState(101);
+			match(T__1);
+			setState(102);
+			match(STRING);
+			setState(107);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__2) {
+			while (_la==T__0) {
 				{
 				{
-				setState(97);
-				match(T__2);
-				setState(98);
+				setState(103);
+				match(T__0);
+				setState(104);
 				match(STRING);
 				}
 				}
-				setState(103);
+				setState(109);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(104);
-			match(T__4);
+			setState(110);
+			match(T__2);
 			}
 		}
 		catch (RecognitionException re) {
@@ -688,85 +705,80 @@ public class UqlParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof UqlListener ) ((UqlListener)listener).exitSortexpression(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof UqlVisitor ) return ((UqlVisitor<? extends T>)visitor).visitSortexpression(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SortexpressionContext sortexpression() throws RecognitionException {
 		SortexpressionContext _localctx = new SortexpressionContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_sortexpression);
+		enterRule(_localctx, 16, RULE_sortexpression);
 		int _la;
 		try {
-			setState(132);
+			setState(138);
 			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(106);
+				setState(112);
 				match(SORT);
-				setState(107);
+				setState(113);
 				match(SORTDIRECTION);
-				setState(108);
-				match(T__5);
-				setState(109);
+				setState(114);
+				match(T__3);
+				setState(115);
 				match(STRINGKEYWORD);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(110);
+				setState(116);
 				match(SORT);
-				setState(114);
+				setState(120);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==WS) {
 					{
 					{
-					setState(111);
+					setState(117);
 					match(WS);
 					}
 					}
-					setState(116);
+					setState(122);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(117);
+				setState(123);
 				match(SORTDIRECTION);
-				setState(121);
+				setState(127);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==WS) {
 					{
 					{
-					setState(118);
+					setState(124);
 					match(WS);
 					}
 					}
-					setState(123);
+					setState(129);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(124);
-				match(T__5);
-				setState(128);
+				setState(130);
+				match(T__3);
+				setState(134);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==WS) {
 					{
 					{
-					setState(125);
+					setState(131);
 					match(WS);
 					}
 					}
-					setState(130);
+					setState(136);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(131);
+				setState(137);
 				match(NUMERICKEYWORD);
 				}
 				break;
@@ -799,41 +811,43 @@ public class UqlParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31\u0089\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\2\7"+
-		"\2\26\n\2\f\2\16\2\31\13\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\5\3&\n\3\3\4\3\4\3\4\3\4\3\4\3\4\5\4.\n\4\3\4\3\4\3\4\7\4\63\n\4\f\4"+
-		"\16\4\66\13\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5"+
-		"\3\5\3\5\3\5\3\5\5\5J\n\5\3\6\3\6\3\6\7\6O\n\6\f\6\16\6R\13\6\3\6\5\6"+
-		"U\n\6\3\7\3\7\3\7\3\7\7\7[\n\7\f\7\16\7^\13\7\3\7\3\7\3\b\3\b\3\b\3\b"+
-		"\7\bf\n\b\f\b\16\bi\13\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\7\ts\n\t\f\t"+
-		"\16\tv\13\t\3\t\3\t\7\tz\n\t\f\t\16\t}\13\t\3\t\3\t\7\t\u0081\n\t\f\t"+
-		"\16\t\u0084\13\t\3\t\5\t\u0087\n\t\3\t\2\3\6\n\2\4\6\b\n\f\16\20\2\2\u0091"+
-		"\2\22\3\2\2\2\4%\3\2\2\2\6-\3\2\2\2\bI\3\2\2\2\nT\3\2\2\2\fV\3\2\2\2\16"+
-		"a\3\2\2\2\20\u0086\3\2\2\2\22\27\5\4\3\2\23\24\7\27\2\2\24\26\5\4\3\2"+
-		"\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\3\3\2\2\2"+
-		"\31\27\3\2\2\2\32\33\5\6\4\2\33\34\7\16\2\2\34\35\5\n\6\2\35\36\5\20\t"+
-		"\2\36\37\7\23\2\2\37&\3\2\2\2 !\5\6\4\2!\"\7\16\2\2\"#\5\n\6\2#$\7\23"+
-		"\2\2$&\3\2\2\2%\32\3\2\2\2% \3\2\2\2&\5\3\2\2\2\'(\b\4\1\2(.\5\b\5\2)"+
-		"*\7\3\2\2*+\5\6\4\2+,\7\4\2\2,.\3\2\2\2-\'\3\2\2\2-)\3\2\2\2.\64\3\2\2"+
-		"\2/\60\f\4\2\2\60\61\7\t\2\2\61\63\5\6\4\5\62/\3\2\2\2\63\66\3\2\2\2\64"+
-		"\62\3\2\2\2\64\65\3\2\2\2\65\7\3\2\2\2\66\64\3\2\2\2\678\7\26\2\289\7"+
-		"\f\2\29J\7\25\2\2:;\7\n\2\2;<\7\r\2\2<J\7\26\2\2=>\7\13\2\2>?\7\24\2\2"+
-		"?J\7\25\2\2@A\7\n\2\2AB\7\24\2\2BJ\7\26\2\2CD\7\n\2\2DE\7\21\2\2EJ\5\16"+
-		"\b\2FG\7\13\2\2GH\7\21\2\2HJ\5\f\7\2I\67\3\2\2\2I:\3\2\2\2I=\3\2\2\2I"+
-		"@\3\2\2\2IC\3\2\2\2IF\3\2\2\2J\t\3\2\2\2KP\7\n\2\2LM\7\5\2\2MO\7\n\2\2"+
-		"NL\3\2\2\2OR\3\2\2\2PN\3\2\2\2PQ\3\2\2\2QU\3\2\2\2RP\3\2\2\2SU\7\22\2"+
-		"\2TK\3\2\2\2TS\3\2\2\2U\13\3\2\2\2VW\7\6\2\2W\\\7\25\2\2XY\7\5\2\2Y[\7"+
-		"\25\2\2ZX\3\2\2\2[^\3\2\2\2\\Z\3\2\2\2\\]\3\2\2\2]_\3\2\2\2^\\\3\2\2\2"+
-		"_`\7\7\2\2`\r\3\2\2\2ab\7\6\2\2bg\7\26\2\2cd\7\5\2\2df\7\26\2\2ec\3\2"+
-		"\2\2fi\3\2\2\2ge\3\2\2\2gh\3\2\2\2hj\3\2\2\2ig\3\2\2\2jk\7\7\2\2k\17\3"+
-		"\2\2\2lm\7\17\2\2mn\7\20\2\2no\7\b\2\2o\u0087\7\n\2\2pt\7\17\2\2qs\7\30"+
-		"\2\2rq\3\2\2\2sv\3\2\2\2tr\3\2\2\2tu\3\2\2\2uw\3\2\2\2vt\3\2\2\2w{\7\20"+
-		"\2\2xz\7\30\2\2yx\3\2\2\2z}\3\2\2\2{y\3\2\2\2{|\3\2\2\2|~\3\2\2\2}{\3"+
-		"\2\2\2~\u0082\7\b\2\2\177\u0081\7\30\2\2\u0080\177\3\2\2\2\u0081\u0084"+
-		"\3\2\2\2\u0082\u0080\3\2\2\2\u0082\u0083\3\2\2\2\u0083\u0085\3\2\2\2\u0084"+
-		"\u0082\3\2\2\2\u0085\u0087\7\13\2\2\u0086l\3\2\2\2\u0086p\3\2\2\2\u0087"+
-		"\21\3\2\2\2\17\27%-\64IPT\\gt{\u0082\u0086";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31\u008f\4\2\t\2"+
+		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3"+
+		"\2\3\2\3\2\7\2\31\n\2\f\2\16\2\34\13\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\3\5\3)\n\3\3\4\3\4\3\4\3\4\3\4\3\4\5\4\61\n\4\3\4\3\4\3\4\3"+
+		"\4\7\4\67\n\4\f\4\16\4:\13\4\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3"+
+		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6P\n\6\3\7\3\7\3\7\7\7U\n\7\f"+
+		"\7\16\7X\13\7\3\7\5\7[\n\7\3\b\3\b\3\b\3\b\7\ba\n\b\f\b\16\bd\13\b\3\b"+
+		"\3\b\3\t\3\t\3\t\3\t\7\tl\n\t\f\t\16\to\13\t\3\t\3\t\3\n\3\n\3\n\3\n\3"+
+		"\n\3\n\7\ny\n\n\f\n\16\n|\13\n\3\n\3\n\7\n\u0080\n\n\f\n\16\n\u0083\13"+
+		"\n\3\n\3\n\7\n\u0087\n\n\f\n\16\n\u008a\13\n\3\n\5\n\u008d\n\n\3\n\2\3"+
+		"\6\13\2\4\6\b\n\f\16\20\22\2\2\u0096\2\24\3\2\2\2\4(\3\2\2\2\6\60\3\2"+
+		"\2\2\b;\3\2\2\2\nO\3\2\2\2\fZ\3\2\2\2\16\\\3\2\2\2\20g\3\2\2\2\22\u008c"+
+		"\3\2\2\2\24\25\5\4\3\2\25\32\b\2\1\2\26\27\7\27\2\2\27\31\5\4\3\2\30\26"+
+		"\3\2\2\2\31\34\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\3\3\2\2\2\34\32"+
+		"\3\2\2\2\35\36\5\6\4\2\36\37\7\f\2\2\37 \5\f\7\2 !\5\22\n\2!\"\7\21\2"+
+		"\2\")\3\2\2\2#$\5\6\4\2$%\7\f\2\2%&\5\f\7\2&\'\7\21\2\2\')\3\2\2\2(\35"+
+		"\3\2\2\2(#\3\2\2\2)\5\3\2\2\2*+\b\4\1\2+\61\5\n\6\2,-\7\23\2\2-.\5\6\4"+
+		"\2./\7\24\2\2/\61\3\2\2\2\60*\3\2\2\2\60,\3\2\2\2\618\3\2\2\2\62\63\f"+
+		"\4\2\2\63\64\5\b\5\2\64\65\5\6\4\5\65\67\3\2\2\2\66\62\3\2\2\2\67:\3\2"+
+		"\2\28\66\3\2\2\289\3\2\2\29\7\3\2\2\2:8\3\2\2\2;<\7\7\2\2<\t\3\2\2\2="+
+		">\7\t\2\2>?\7\n\2\2?P\7\25\2\2@A\7\b\2\2AB\7\13\2\2BP\7\26\2\2CD\7\t\2"+
+		"\2DE\7\22\2\2EP\7\25\2\2FG\7\b\2\2GH\7\22\2\2HP\7\26\2\2IJ\7\b\2\2JK\7"+
+		"\17\2\2KP\5\20\t\2LM\7\t\2\2MN\7\17\2\2NP\5\16\b\2O=\3\2\2\2O@\3\2\2\2"+
+		"OC\3\2\2\2OF\3\2\2\2OI\3\2\2\2OL\3\2\2\2P\13\3\2\2\2QV\7\b\2\2RS\7\3\2"+
+		"\2SU\7\b\2\2TR\3\2\2\2UX\3\2\2\2VT\3\2\2\2VW\3\2\2\2W[\3\2\2\2XV\3\2\2"+
+		"\2Y[\7\20\2\2ZQ\3\2\2\2ZY\3\2\2\2[\r\3\2\2\2\\]\7\4\2\2]b\7\25\2\2^_\7"+
+		"\3\2\2_a\7\25\2\2`^\3\2\2\2ad\3\2\2\2b`\3\2\2\2bc\3\2\2\2ce\3\2\2\2db"+
+		"\3\2\2\2ef\7\5\2\2f\17\3\2\2\2gh\7\4\2\2hm\7\26\2\2ij\7\3\2\2jl\7\26\2"+
+		"\2ki\3\2\2\2lo\3\2\2\2mk\3\2\2\2mn\3\2\2\2np\3\2\2\2om\3\2\2\2pq\7\5\2"+
+		"\2q\21\3\2\2\2rs\7\r\2\2st\7\16\2\2tu\7\6\2\2u\u008d\7\b\2\2vz\7\r\2\2"+
+		"wy\7\30\2\2xw\3\2\2\2y|\3\2\2\2zx\3\2\2\2z{\3\2\2\2{}\3\2\2\2|z\3\2\2"+
+		"\2}\u0081\7\16\2\2~\u0080\7\30\2\2\177~\3\2\2\2\u0080\u0083\3\2\2\2\u0081"+
+		"\177\3\2\2\2\u0081\u0082\3\2\2\2\u0082\u0084\3\2\2\2\u0083\u0081\3\2\2"+
+		"\2\u0084\u0088\7\6\2\2\u0085\u0087\7\30\2\2\u0086\u0085\3\2\2\2\u0087"+
+		"\u008a\3\2\2\2\u0088\u0086\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008b\3\2"+
+		"\2\2\u008a\u0088\3\2\2\2\u008b\u008d\7\t\2\2\u008cr\3\2\2\2\u008cv\3\2"+
+		"\2\2\u008d\23\3\2\2\2\17\32(\608OVZbmz\u0081\u0088\u008c";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

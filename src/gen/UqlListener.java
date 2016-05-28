@@ -1,4 +1,7 @@
-// Generated from D:/szko³a/4rok/Kompilator/java\Uql.g4 by ANTLR 4.5.1
+// Generated from D:/szko³a/4rok/Kompilator/UqlProject/ANTLR\Uql.g4 by ANTLR 4.5.1
+
+    package gen;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -36,6 +39,16 @@ public interface UqlListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitQuery(UqlParser.QueryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UqlParser#logic}.
+	 * @param ctx the parse tree
+	 */
+	void enterLogic(UqlParser.LogicContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UqlParser#logic}.
+	 * @param ctx the parse tree
+	 */
+	void exitLogic(UqlParser.LogicContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UqlParser#expression}.
 	 * @param ctx the parse tree

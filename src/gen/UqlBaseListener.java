@@ -1,4 +1,7 @@
-// Generated from D:/szko³a/4rok/Kompilator/java\Uql.g4 by ANTLR 4.5.1
+// Generated from D:/szko³a/4rok/Kompilator/UqlProject/ANTLR\Uql.g4 by ANTLR 4.5.1
+
+    package gen;
+
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -46,6 +49,18 @@ public class UqlBaseListener implements UqlListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitQuery(UqlParser.QueryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLogic(UqlParser.LogicContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLogic(UqlParser.LogicContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
