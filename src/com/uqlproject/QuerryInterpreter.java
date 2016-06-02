@@ -3,29 +3,28 @@ package com.uqlproject;
 /**
  * Created by Igor on 2016-05-27.
  */
-import gen.*;
+
+import gen.UqlListener;
+import gen.UqlParser;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import org.omg.CORBA.Object;
-import org.omg.CORBA.portable.Streamable;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class QuerryInterpreter implements UqlListener{
+public class QuerryInterpreter implements UqlListener {
 
     private StringBuilder querryBuilder;
     private StringBuilder selectBuilder;
 
     private static final String SELECT_QUERY = "SELECT";
     private static final String JOIN_QUERY =
-            "LEFT JOIN MediaType ON Track.MediaTypeId = MediaType.MediaTypeId\n" +
-            "LEFT JOIN Genre ON Track.GenreId = Genre.GenreId\n" +
-            "LEFT JOIN Album ON Track.AlbumId = Album.AlbumId\n" +
-            "LEFT JOIN Artist ON Album.ArtistId = Artist.ArtistId";
-    private static final String BASE_TABLE = "FROM Track";
+            "LEFT JOIN \"MediaType\" ON \"Track\".\"MediaTypeId\" = \"MediaType\".\"MediaTypeId\"\n" +
+            "LEFT JOIN \"Genre\" ON \"Track\".\"GenreId\" = \"Genre\".\"GenreId\"\n" +
+            "LEFT JOIN \"Album\" ON \"Track\".\"AlbumId\" = \"Album\".\"AlbumId\"\n" +
+            "LEFT JOIN \"Artist\" ON \"Album\".\"ArtistId\" = \"Artist\".\"ArtistId\"";
+    private static final String BASE_TABLE = "FROM \"Track\"";
     private static final String ASCENDING_UQL_TEXT = "ascending";
     private static final String DESCENDING_UQL_TEXT = "descending";
     private static final String ASCENDING_SQL_TEXT = "ASC";
@@ -35,7 +34,7 @@ public class QuerryInterpreter implements UqlListener{
 
     private ColumnHelper columnHelper = new ColumnHelper();
 
-    private List<String> queries = new ArrayList<>();
+    private List<String> queries;
 
     public QuerryInterpreter(){
 
@@ -43,7 +42,7 @@ public class QuerryInterpreter implements UqlListener{
 
     @Override
     public void enterQueries(UqlParser.QueriesContext ctx) {
-
+        queries = new ArrayList<>();
     }
 
     @Override
@@ -251,6 +250,7 @@ public class QuerryInterpreter implements UqlListener{
         for (String query : queries){
             queriesBuidler.append(query + "\n");
         }
-        return queriesBuidler.toString();
+        String sql = queriesBuidler.toString();
+        return sql;
     }
 }

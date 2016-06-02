@@ -1,4 +1,4 @@
-// Generated from D:/szko³a/4rok/Kompilator/UqlProject/ANTLR\Uql.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Mudzo/Documents/UqlProject/ANTLR\Uql.g4 by ANTLR 4.5.1
 
     package gen;
 

@@ -1,10 +1,8 @@
 package com.uqlproject;
 
-import org.stringtemplate.v4.ST;
-import org.stringtemplate.v4.StringRenderer;
-
-import java.text.MessageFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Igor on 2016-05-27.
@@ -56,7 +54,7 @@ public class ColumnHelper {
     }
 
     private String concatTableWithColumn(String table, String column){
-        return table + '.' + column;
+        return "\"" + table + "\".\"" + column + "\"";
     }
 
     public List<String> getAllColumns(){
