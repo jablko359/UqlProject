@@ -133,7 +133,7 @@ public class QuerryInterpreter implements UqlListener {
     @Override
     public void enterTablearray(UqlParser.TablearrayContext ctx) {
         if(ctx.ALLSELECTOR() != null){
-            List<String> columns = columnHelper.getAllColumns();
+            List<String> columns = columnHelper.getAllColumnsWithLabels();
             for (int i = 0; i < columns.size(); i++){
                 selectBuilder.append(columns.get(i));
                 if(i != columns.size() - 1){
@@ -143,7 +143,7 @@ public class QuerryInterpreter implements UqlListener {
         }
         else {
             for(int i = 0; i < ctx.STRINGKEYWORD().size();i++ ){
-                selectBuilder.append(columnHelper.getColumn(ctx.STRINGKEYWORD(i).getText()));
+                selectBuilder.append(columnHelper.getColumnWithLabel(ctx.STRINGKEYWORD(i).getText()));
                 if(i != ctx.STRINGKEYWORD().size() - 1){
                     selectBuilder.append(',');
                 }
